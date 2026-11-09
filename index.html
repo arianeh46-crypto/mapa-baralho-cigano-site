@@ -74,23 +74,8 @@ h2{font-family:var(--mao);font-weight:400;font-size:clamp(2.1rem,5vw,3rem);line-
 .item h3{font-size:1.05rem;margin:8px 0 6px}
 .item p{margin:0;color:var(--suave);font-size:.95rem}
 
-/* Carrossel */
-.amostras{padding-block:70px}
-.carrossel{position:relative}
-.trilho{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:none}
-.trilho::-webkit-scrollbar{display:none}
-.slide{flex:0 0 min(78%,640px);scroll-snap-align:center;margin:0}
-.slide img{border-radius:16px;border:1.5px solid var(--linha);box-shadow:0 18px 34px -24px rgba(60,10,20,.45);-webkit-user-drag:none}
-.slide figcaption{font-weight:800;font-size:.92rem;margin-top:10px}
-.slide figcaption span{display:block;font-weight:400;color:var(--suave)}
-.setas{display:flex;gap:10px;justify-content:flex-end;margin-top:-30px}
-.setas button{width:46px;height:46px;border-radius:50%;border:2px solid var(--tinta);background:var(--papel);font-size:1.3rem;cursor:pointer;color:var(--tinta)}
-.pontos{display:flex;gap:6px;justify-content:center;margin-top:14px;pointer-events:none}
-.pontos i{width:8px;height:8px;border-radius:50%;background:var(--linha)}
-.pontos i.on{background:var(--vinho)}
-
 /* Tiragem demo */
-.demo{padding-block:10px 70px}
+.demo{padding-block:70px}
 .demo-caixa{display:grid;grid-template-columns:1fr 1.3fr;gap:30px;align-items:center;background:var(--rosa);border-radius:26px;padding:clamp(22px,4vw,44px)}
 .demo-caixa p{color:var(--suave)}
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -150,7 +135,6 @@ footer .mao{font-size:1.4rem;color:var(--vinho)}
   .grade4,.grade-planos,.linha-passos{grid-template-columns:1fr}
   .grade-planos{gap:22px}
   .trio{grid-template-columns:1fr}
-  .slide{flex-basis:88%}
   .mesa .arte{width:82%;margin:0 auto}
   .notebook{margin-left:0;width:78%}
   .celular{width:40%}
@@ -198,21 +182,6 @@ footer .mao{font-size:1.4rem;color:var(--vinho)}
     <article class="item"><span class="num">52</span><h3>Combinações</h3><p>Exemplos de duplas e trios para você entender como as cartas conversam entre si.</p></article>
     <article class="item"><span class="num">4</span><h3>Tiragens do método</h3><p>Sim ou Não, Aspectos, Define uma Questão (70/25/5) e Qual Caminho Seguir, com exemplos.</p></article>
     <article class="item"><span class="num">24h</span><h3>No celular ou computador</h3><p>Leia, busque qualquer carta e faça tiragens virtuais na área de membros, a qualquer hora.</p></article>
-  </div>
-</div></section>
-
-<section class="faixa amostras"><div class="miolo">
-  <div class="cab"><span class="eyebrow">Por dentro do Mapa</span><h2>Veja algumas páginas</h2><p>Arraste para o lado. As imagens abaixo são amostras do conteúdo da área de membros.</p></div>
-  <div class="carrossel">
-    <div class="trilho" id="trilho" tabindex="0" aria-label="Amostras do Mapa">
-      <figure class="slide"><img src="img/capa.jpg" alt="Capa do Mapa do Baralho Cigano" width="960" height="679" loading="lazy"><figcaption>A capa<span>O Mapa completo das 36 cartas</span></figcaption></figure>
-      <figure class="slide"><img src="img/cavaleiro.jpg" alt="Página da carta O Cavaleiro" width="960" height="679" loading="lazy"><figcaption>Carta 1 · O Cavaleiro<span>Cada carta tem uma página completa</span></figcaption></figure>
-      <figure class="slide"><img src="img/coracao.jpg" alt="Página da carta O Coração" width="960" height="679" loading="lazy"><figcaption>Carta 24 · O Coração<span>Naipe associado e exemplo de combinação</span></figcaption></figure>
-      <figure class="slide"><img src="img/sol.jpg" alt="Página da carta O Sol" width="960" height="679" loading="lazy"><figcaption>Carta 31 · O Sol<span>Pontos positivos e negativos</span></figcaption></figure>
-      <figure class="slide"><img src="img/combinacoes.jpg" alt="Página de combinações de três cartas" width="960" height="679" loading="lazy"><figcaption>Combinações<span>Trios de cartas interpretados</span></figcaption></figure>
-      <figure class="slide"><img src="img/tiragem.jpg" alt="Página da tiragem Define uma questão" width="960" height="679" loading="lazy"><figcaption>Tiragem “Define uma questão”<span>Passo a passo com exemplo real</span></figcaption></figure>
-    </div>
-    <div class="setas"><button type="button" id="voltar" aria-label="Anterior">‹</button><button type="button" id="avancar" aria-label="Próxima">›</button></div>
   </div>
 </div></section>
 
@@ -285,22 +254,6 @@ footer .mao{font-size:1.4rem;color:var(--vinho)}
 
 <script>
 (function(){
-  // Carrossel: setas, pontos e avanço automático (pausa ao tocar)
-  var trilho=document.getElementById('trilho'),slides=[].slice.call(trilho.children);
-  var pontos=document.createElement('div');pontos.className='pontos';
-  slides.forEach(function(){pontos.appendChild(document.createElement('i'))});
-  trilho.parentNode.insertBefore(pontos,trilho.nextSibling.nextSibling);
-  function atual(){var c=trilho.scrollLeft+trilho.clientWidth/2,m=0,d=1e9;slides.forEach(function(s,i){var x=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(x<d){d=x;m=i}});return m}
-  function ir(i){i=(i+slides.length)%slides.length;trilho.scrollTo({left:slides[i].offsetLeft-(trilho.clientWidth-slides[i].offsetWidth)/2})}
-  function marcar(){var a=atual();[].forEach.call(pontos.children,function(p,i){p.className=i===a?'on':''})}
-  trilho.addEventListener('scroll',function(){clearTimeout(trilho._t);trilho._t=setTimeout(marcar,80)});
-  document.getElementById('voltar').onclick=function(){parar();ir(atual()-1)};
-  document.getElementById('avancar').onclick=function(){parar();ir(atual()+1)};
-  var auto=matchMedia('(prefers-reduced-motion: reduce)').matches?null:setInterval(function(){ir(atual()+1)},4500);
-  function parar(){clearInterval(auto)}
-  trilho.addEventListener('pointerdown',parar);trilho.addEventListener('keydown',parar);
-  marcar();
-
   // Demonstração da tiragem
   var C=[["O Cavaleiro","Movimento e novidades a caminho."],["O Trevo","Sorte passageira e oportunidades."],["O Navio","Viagens, mudanças e progresso."],["A Casa","Lar, família e segurança."],["A Árvore","Crescimento, saúde e raízes."],["As Nuvens","Dúvidas e fases nebulosas."],["O Buquê","Alegria, presentes e harmonia."],["Os Pássaros","Conversas e comunicação."],["A Criança","Novos começos e leveza."],["O Cachorro","Amizade e lealdade."],["A Estrela","Fé, esperança e proteção."],["A Cegonha","Mudanças positivas e novidades."],["O Jardim","Vida social e conexões."],["Os Caminhos","Escolhas e decisões."],["O Coração","Amor e sentimentos profundos."],["O Anel","Compromissos e alianças."],["O Livro","Segredos e conhecimento."],["A Carta","Mensagens e notícias."],["Os Lírios","Paz, maturidade e harmonia."],["O Sol","Sucesso, clareza e conquistas."],["A Lua","Intuição e reconhecimento."],["A Chave","Solução e portas se abrindo."],["Os Peixes","Dinheiro e prosperidade."],["A Âncora","Estabilidade e segurança."]];
   var pos=["70% da resposta","25% da resposta","5% da resposta"],trio=document.getElementById('trio');
@@ -309,7 +262,7 @@ footer .mao{font-size:1.4rem;color:var(--vinho)}
     trio.innerHTML='';b.slice(0,3).forEach(function(c,i){var d=document.createElement('div');d.className='mini-carta virando';d.style.animationDelay=(i*.12)+'s';
       d.innerHTML='<small>'+pos[i]+'</small><b></b><p></p>';d.querySelector('b').textContent=c[0];d.querySelector('p').textContent=c[1];trio.appendChild(d)});
   };
-  // Amostras não podem ser arrastadas nem salvas com o botão direito
+  // Imagens não podem ser salvas com o botão direito
   document.addEventListener('contextmenu',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
 })();
 </script>
