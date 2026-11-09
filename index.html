@@ -64,6 +64,18 @@ h2{font-family:var(--mao);font-weight:400;font-size:clamp(2.1rem,5vw,3rem);line-
 .mini-carta b{font-family:var(--mao);font-weight:400;color:var(--vinho);font-size:1rem;line-height:1.1}
 .mini-carta p{margin:2px 0 0;font-size:.55rem;line-height:1.35;color:var(--suave)}
 
+/* Como você acessa */
+.acesso{padding-block:0 56px}
+.aviso-acesso{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center;background:var(--rosa);border:2px dashed var(--vinho);border-radius:24px;padding:clamp(22px,4vw,40px)}
+.aviso-texto h2{margin:6px 0 10px}
+.aviso-texto p{margin:0;color:var(--tinta);max-width:52ch}
+.aviso-lista{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.aviso-lista li{background:var(--papel);border-radius:16px;padding:14px 16px 14px 46px;position:relative}
+.aviso-lista li::before{content:"✓";position:absolute;left:14px;top:13px;width:22px;height:22px;border-radius:50%;background:var(--vinho);color:#fff;font-weight:900;font-size:.8rem;display:grid;place-items:center}
+.aviso-lista b{display:block}
+.aviso-lista span{color:var(--suave);font-size:.93rem}
+@media (max-width:900px){.aviso-acesso{grid-template-columns:1fr}}
+
 /* Recebe */
 .recebe{padding-block:70px;background:var(--fundo);border-block:2px dashed var(--linha)}
 .cab{display:flex;flex-direction:column;gap:8px;margin-bottom:34px;max-width:640px}
@@ -154,7 +166,7 @@ footer .mao{font-size:1.4rem;color:var(--vinho)}
   <div>
     <span class="selo">✦ 777 ✦</span>
     <h1>Mapa do Baralho Cigano<span>Aprenda a ler as 36 cartas com clareza</span></h1>
-    <p class="lead">Significado, palavras-chave, naipe, conselho e combinações de cada carta, mais 4 tiragens prontas para usar. Tudo organizado num só lugar, com tiragem virtual para praticar quando quiser.</p>
+    <p class="lead">Significado, palavras-chave, naipe, conselho e combinações de cada carta, mais 4 tiragens prontas para usar. Tudo numa <b>área de membros online</b>, com tiragem virtual para praticar quando quiser.</p>
     <div class="acoes">
       <a class="botao" href="#planos">Quero meu acesso</a>
       <span class="preco-de">a partir de <b>R$ 6,66</b>/mês</span>
@@ -172,6 +184,21 @@ footer .mao{font-size:1.4rem;color:var(--vinho)}
       <div class="mini-carta"><small>25% da resposta</small><b>A Chave</b><p>Solução e portas se abrindo.</p></div>
       <div class="mini-carta"><small>5% da resposta</small><b>O Cavaleiro</b><p>Notícias chegando rápido.</p></div>
     </div></div>
+  </div>
+</div></section>
+
+<section class="faixa acesso"><div class="miolo">
+  <div class="aviso-acesso">
+    <div class="aviso-texto">
+      <span class="eyebrow">Como você acessa</span>
+      <h2>Não é um ebook para baixar</h2>
+      <p>O Mapa do Baralho Cigano fica na sua <b>área de membros</b>: um espaço online só seu. Depois do pagamento você cria sua senha e entra pelo <b>celular ou computador</b>, quando quiser, enquanto sua assinatura estiver ativa.</p>
+    </div>
+    <ul class="aviso-lista">
+      <li><b>Nada para baixar ou guardar</b><span>Você não recebe arquivo. É só entrar com seu e-mail e senha.</span></li>
+      <li><b>Funciona em qualquer aparelho</b><span>Celular, tablet ou computador, direto pelo navegador.</span></li>
+      <li><b>Tudo num só lugar</b><span>O Mapa completo, a busca das 36 cartas e a tiragem virtual.</span></li>
+    </ul>
   </div>
 </div></section>
 
