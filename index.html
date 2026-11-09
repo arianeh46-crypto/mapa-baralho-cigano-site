@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mapa do Baralho Cigano · Aprenda a ler as 36 cartas</title>
+<meta name="description" content="O Mapa completo das 36 cartas do Baralho Cigano: significados, combinações, naipes e tiragens, com tiragem virtual. Acesso online por assinatura.">
+<meta property="og:title" content="Mapa do Baralho Cigano">
+<meta property="og:description" content="As 36 cartas, combinações e tiragens do Baralho Cigano, com tiragem virtual. Acesso online.">
+<meta property="og:image" content="img/cartas-capa.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito:wght@400;600;700;800;900&display=swap">
+<style>
+/* Visual do próprio ebook: papel branco, vinho do logo, letra de mão e bordas tracejadas. Uma faixa escura (planos) para dar peso à decisão. */
+:root{
+  --papel:#fffdfc; --fundo:#fbf7f6; --tinta:#241b1e; --suave:#6d6064; --vinho:#9b1b2c; --vinho-esc:#6e1220;
+  --rosa:#f6e7e9; --ouro:#b8862f; --noite:#1f1418; --linha:#e6dcde;
+  --mao:"Gochi Hand","Comic Sans MS",cursive; --texto:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--papel);color:var(--tinta);font:17px/1.6 var(--texto)}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--vinho)}
+.faixa{padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.miolo{max-width:1120px;margin:0 auto}
+.mao{font-family:var(--mao);font-weight:400}
+h1,h2,h3{text-wrap:balance;margin:0}
+h2{font-family:var(--mao);font-weight:400;font-size:clamp(2.1rem,5vw,3rem);line-height:1.05;color:var(--vinho)}
+.eyebrow{font-size:.78rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro)}
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--vinho);color:#fff;font-weight:900;text-decoration:none;padding:16px 28px;border-radius:14px;box-shadow:0 6px 0 var(--vinho-esc);transition:transform .15s,box-shadow .15s}
+.botao:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--vinho-esc)}
+.botao:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
+
+/* Topo */
+.topo{display:flex;justify-content:space-between;align-items:center;padding-block:16px}
+.logo{font-family:var(--mao);font-size:1.6rem;line-height:1;color:var(--tinta);text-decoration:none}
+.logo b{color:var(--vinho);font-weight:400}
+.topo a.entrar{font-weight:800;font-size:.92rem;text-decoration:none;border:2px dashed var(--tinta);color:var(--tinta);padding:7px 14px;border-radius:12px}
+
+/* Hero */
+.hero{padding-block:28px 64px;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.selo{display:inline-flex;align-items:center;gap:10px;font-family:var(--texto);font-weight:900;letter-spacing:.2em;font-size:1rem;color:var(--vinho);border:2px dashed var(--vinho);border-radius:999px;padding:2px 16px;margin-bottom:14px}
+.hero h1{font-family:var(--mao);font-weight:400;font-size:clamp(3rem,8vw,5.2rem);line-height:.95;color:var(--vinho)}
+.hero h1 span{display:block;color:var(--tinta);font-size:.55em;margin-top:10px}
+.hero p.lead{font-size:1.15rem;color:var(--suave);max-width:46ch;margin:18px 0 26px}
+.hero .acoes{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero .preco-de{font-weight:800;color:var(--suave)}
+.hero .preco-de b{color:var(--tinta);font-size:1.25rem}
+.mesa{position:relative}
+.mesa .arte{border-radius:20px}
+.notebook{position:relative;margin-top:-30px;margin-left:8%;width:92%}
+.tela-note{background:#2a2226;border-radius:14px 14px 4px 4px;padding:10px 10px 12px;box-shadow:0 30px 50px -28px rgba(60,10,20,.55)}
+.tela-note .barra{display:flex;gap:5px;margin-bottom:8px}
+.tela-note .barra i{width:8px;height:8px;border-radius:50%;background:#5b4a50}
+.tela-note img{border-radius:6px}
+.base-note{height:14px;background:linear-gradient(#d8ccd0,#b9a9ae);border-radius:0 0 18px 18px;margin:0 -5%}
+.celular{position:absolute;right:0;bottom:-26px;width:31%;min-width:120px;background:#2a2226;border-radius:26px;padding:9px;box-shadow:0 24px 40px -18px rgba(60,10,20,.6)}
+.celular .tela{background:var(--fundo);border-radius:19px;overflow:hidden;aspect-ratio:9/17;padding:12px 9px;display:flex;flex-direction:column;gap:7px}
+.celular .t{font-family:var(--mao);color:var(--vinho);font-size:1.05rem;line-height:1}
+.mini-carta{background:#fff;border:1.5px dashed var(--tinta);border-radius:10px;padding:7px 8px}
+.mini-carta small{display:block;font-size:.55rem;font-weight:900;letter-spacing:.08em;color:var(--suave);text-transform:uppercase}
+.mini-carta b{font-family:var(--mao);font-weight:400;color:var(--vinho);font-size:1rem;line-height:1.1}
+.mini-carta p{margin:2px 0 0;font-size:.55rem;line-height:1.35;color:var(--suave)}
+
+/* Recebe */
+.recebe{padding-block:70px;background:var(--fundo);border-block:2px dashed var(--linha)}
+.cab{display:flex;flex-direction:column;gap:8px;margin-bottom:34px;max-width:640px}
+.cab p{color:var(--suave);margin:0}
+.grade4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.item{background:var(--papel);border:2px dashed var(--tinta);border-radius:20px;padding:22px}
+.item .num{font-family:var(--mao);font-size:2.6rem;line-height:1;color:var(--vinho)}
+.item h3{font-size:1.05rem;margin:8px 0 6px}
+.item p{margin:0;color:var(--suave);font-size:.95rem}
+
+/* Carrossel */
+.amostras{padding-block:70px}
+.carrossel{position:relative}
+.trilho{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:none}
+.trilho::-webkit-scrollbar{display:none}
+.slide{flex:0 0 min(78%,640px);scroll-snap-align:center;margin:0}
+.slide img{border-radius:16px;border:1.5px solid var(--linha);box-shadow:0 18px 34px -24px rgba(60,10,20,.45);-webkit-user-drag:none}
+.slide figcaption{font-weight:800;font-size:.92rem;margin-top:10px}
+.slide figcaption span{display:block;font-weight:400;color:var(--suave)}
+.setas{display:flex;gap:10px;justify-content:flex-end;margin-top:-30px}
+.setas button{width:46px;height:46px;border-radius:50%;border:2px solid var(--tinta);background:var(--papel);font-size:1.3rem;cursor:pointer;color:var(--tinta)}
+.pontos{display:flex;gap:6px;justify-content:center;margin-top:14px;pointer-events:none}
+.pontos i{width:8px;height:8px;border-radius:50%;background:var(--linha)}
+.pontos i.on{background:var(--vinho)}
+
+/* Tiragem demo */
+.demo{padding-block:10px 70px}
+.demo-caixa{display:grid;grid-template-columns:1fr 1.3fr;gap:30px;align-items:center;background:var(--rosa);border-radius:26px;padding:clamp(22px,4vw,44px)}
+.demo-caixa p{color:var(--suave)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.trio .mini-carta{padding:14px;border-width:2px;background:#fff}
+.trio .mini-carta small{font-size:.68rem}
+.trio .mini-carta b{font-size:1.6rem}
+.trio .mini-carta p{font-size:.82rem}
+#embaralhar{margin-top:6px;border:none;cursor:pointer;font:inherit}
+.trio .mini-carta.virando{animation:virar .5s ease-out both}
+@keyframes virar{from{transform:rotateY(80deg);opacity:.2}to{transform:none;opacity:1}}
+
+/* Planos */
+.planos{background:var(--noite);color:#f6eef0;padding-block:76px}
+.planos h2{color:#fff}
+.planos .cab p{color:#cdbfc3}
+.grade-planos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+.plano{position:relative;display:flex;flex-direction:column;background:#2b1d22;border:2px dashed #6a5157;border-radius:22px;padding:24px 20px}
+.plano.destaque{background:#fffdfc;color:var(--tinta);border:3px solid var(--ouro)}
+.fita{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--ouro);color:#fff;font-weight:900;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;white-space:nowrap}
+.plano h3{font-family:var(--mao);font-weight:400;font-size:1.8rem;line-height:1}
+.plano .periodo{font-size:.85rem;opacity:.75}
+.plano .valor{font-size:2.3rem;font-weight:900;margin:14px 0 0;font-variant-numeric:tabular-nums;line-height:1}
+.plano .valor small{font-size:1rem;font-weight:800}
+.plano .mes{font-size:.9rem;opacity:.8;margin:6px 0 0;font-variant-numeric:tabular-nums}
+.plano .eco{display:inline-block;align-self:flex-start;margin-top:10px;font-size:.78rem;font-weight:900;padding:3px 10px;border-radius:999px;background:#3d2a30;color:#f3c77e}
+.plano.destaque .eco{background:var(--rosa);color:var(--vinho)}
+.plano ul{list-style:none;padding:0;margin:16px 0 20px;font-size:.9rem;display:grid;gap:6px}
+.plano li::before{content:"✦ ";color:var(--ouro)}
+.plano .botao{margin-top:auto;width:100%;padding:14px 10px}
+.plano:not(.destaque) .botao{background:transparent;border:2px solid #f6eef0;box-shadow:none;color:#fff}
+.plano:not(.destaque) .botao:hover{background:#f6eef0;color:var(--tinta);transform:none}
+.garantia{margin-top:26px;text-align:center;color:#cdbfc3;font-size:.92rem}
+
+/* Como funciona + FAQ */
+.passos{padding-block:70px}
+.linha-passos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:p}
+.passo{border-top:3px dashed var(--vinho);padding-top:14px}
+.passo b{display:block;font-family:var(--mao);font-weight:400;font-size:1.6rem;color:var(--vinho)}
+.passo p{margin:4px 0 0;color:var(--suave)}
+.faq{padding-block:10px 70px}
+details{border-bottom:2px dashed var(--linha);padding:16px 0}
+summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--vinho)}
+details[open] summary::after{content:"–"}
+details p{color:var(--suave);margin:8px 0 0;max-width:70ch}
+
+footer{background:var(--fundo);border-top:2px dashed var(--linha);padding-block:28px 40px;font-size:.82rem;color:var(--suave);text-align:center}
+footer .mao{font-size:1.4rem;color:var(--vinho)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:56px}
+  .grade4,.grade-planos{grid-template-columns:repeat(2,1fr)}
+  .demo-caixa{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .grade4,.grade-planos,.linha-passos{grid-template-columns:1fr}
+  .grade-planos{gap:22px}
+  .trio{grid-template-columns:1fr}
+  .slide{flex-basis:88%}
+  .mesa .arte{width:82%;margin:0 auto}
+  .notebook{margin-left:0;width:78%}
+  .celular{width:40%}
+  .topo a.entrar{font-size:.8rem;padding:6px 10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="faixa"><div class="miolo topo">
+  <a class="logo" href="#">Mapa do <b>Baralho Cigano</b></a>
+  <a class="entrar" href="https://cigana-esmeralda.onrender.com/entrar">Já sou assinante</a>
+</div></header>
+
+<section class="faixa"><div class="miolo hero">
+  <div>
+    <span class="selo">✦ 777 ✦</span>
+    <h1>Mapa do Baralho Cigano<span>Aprenda a ler as 36 cartas com clareza</span></h1>
+    <p class="lead">Significado, palavras-chave, naipe, conselho e combinações de cada carta, mais 4 tiragens prontas para usar. Tudo organizado num só lugar, com tiragem virtual para praticar quando quiser.</p>
+    <div class="acoes">
+      <a class="botao" href="#planos">Quero meu acesso</a>
+      <span class="preco-de">a partir de <b>R$ 6,66</b>/mês</span>
+    </div>
+  </div>
+  <div class="mesa" aria-hidden="true">
+    <img class="arte" src="img/cartas-capa.jpg" alt="" width="760" height="478">
+    <div class="notebook">
+      <div class="tela-note"><div class="barra"><i></i><i></i><i></i></div><img src="img/cavaleiro.jpg" alt="" width="960" height="679"></div>
+      <div class="base-note"></div>
+    </div>
+    <div class="celular"><div class="tela">
+      <span class="t">Tirar cartas</span>
+      <div class="mini-carta"><small>70% da resposta</small><b>O Sol</b><p>Sucesso, clareza e vitória.</p></div>
+      <div class="mini-carta"><small>25% da resposta</small><b>A Chave</b><p>Solução e portas se abrindo.</p></div>
+      <div class="mini-carta"><small>5% da resposta</small><b>O Cavaleiro</b><p>Notícias chegando rápido.</p></div>
+    </div></div>
+  </div>
+</div></section>
+
+<section class="faixa recebe"><div class="miolo">
+  <div class="cab"><span class="eyebrow">O que você recebe</span><h2>Tudo que você precisa para ler o Baralho Cigano</h2></div>
+  <div class="grade4">
+    <article class="item"><span class="num">36</span><h3>Cartas explicadas</h3><p>Significado geral, palavras-chave, lado positivo e negativo e o conselho de cada carta.</p></article>
+    <article class="item"><span class="num">52</span><h3>Combinações</h3><p>Exemplos de duplas e trios para você entender como as cartas conversam entre si.</p></article>
+    <article class="item"><span class="num">4</span><h3>Tiragens do método</h3><p>Sim ou Não, Aspectos, Define uma Questão (70/25/5) e Qual Caminho Seguir, com exemplos.</p></article>
+    <article class="item"><span class="num">24h</span><h3>No celular ou computador</h3><p>Leia, busque qualquer carta e faça tiragens virtuais na área de membros, a qualquer hora.</p></article>
+  </div>
+</div></section>
+
+<section class="faixa amostras"><div class="miolo">
+  <div class="cab"><span class="eyebrow">Por dentro do Mapa</span><h2>Veja algumas páginas</h2><p>Arraste para o lado. As imagens abaixo são amostras do conteúdo da área de membros.</p></div>
+  <div class="carrossel">
+    <div class="trilho" id="trilho" tabindex="0" aria-label="Amostras do Mapa">
+      <figure class="slide"><img src="img/capa.jpg" alt="Capa do Mapa do Baralho Cigano" width="960" height="679" loading="lazy"><figcaption>A capa<span>O Mapa completo das 36 cartas</span></figcaption></figure>
+      <figure class="slide"><img src="img/cavaleiro.jpg" alt="Página da carta O Cavaleiro" width="960" height="679" loading="lazy"><figcaption>Carta 1 · O Cavaleiro<span>Cada carta tem uma página completa</span></figcaption></figure>
+      <figure class="slide"><img src="img/coracao.jpg" alt="Página da carta O Coração" width="960" height="679" loading="lazy"><figcaption>Carta 24 · O Coração<span>Naipe associado e exemplo de combinação</span></figcaption></figure>
+      <figure class="slide"><img src="img/sol.jpg" alt="Página da carta O Sol" width="960" height="679" loading="lazy"><figcaption>Carta 31 · O Sol<span>Pontos positivos e negativos</span></figcaption></figure>
+      <figure class="slide"><img src="img/combinacoes.jpg" alt="Página de combinações de três cartas" width="960" height="679" loading="lazy"><figcaption>Combinações<span>Trios de cartas interpretados</span></figcaption></figure>
+      <figure class="slide"><img src="img/tiragem.jpg" alt="Página da tiragem Define uma questão" width="960" height="679" loading="lazy"><figcaption>Tiragem “Define uma questão”<span>Passo a passo com exemplo real</span></figcaption></figure>
+    </div>
+    <div class="setas"><button type="button" id="voltar" aria-label="Anterior">‹</button><button type="button" id="avancar" aria-label="Próxima">›</button></div>
+  </div>
+</div></section>
+
+<section class="faixa demo"><div class="miolo demo-caixa">
+  <div>
+    <span class="eyebrow">Experimente</span>
+    <h2>Tiragem virtual</h2>
+    <p>Na área de membros você embaralha e tira as cartas na tela, em qualquer uma das 4 tiragens, e lê o significado de cada posição na hora.</p>
+    <button type="button" class="botao" id="embaralhar">Embaralhar e tirar 3 cartas</button>
+  </div>
+  <div class="trio" id="trio" aria-live="polite">
+    <div class="mini-carta"><small>70% da resposta</small><b>O Sol</b><p>Sucesso, clareza e conquistas.</p></div>
+    <div class="mini-carta"><small>25% da resposta</small><b>A Chave</b><p>Solução, resposta e portas se abrindo.</p></div>
+    <div class="mini-carta"><small>5% da resposta</small><b>O Cavaleiro</b><p>Movimento e novidades a caminho.</p></div>
+  </div>
+</div></section>
+
+<section class="faixa planos" id="planos"><div class="miolo">
+  <div class="cab"><span class="eyebrow">Planos</span><h2>Escolha seu acesso</h2><p>Todos os planos dão acesso completo. Quanto maior o período, menor o valor por mês.</p></div>
+  <div class="grade-planos">
+    <article class="plano">
+      <h3>Mensal</h3><span class="periodo">renova todo mês</span>
+      <p class="valor"><small>R$</small> 12,00</p><p class="mes">R$ 12,00 por mês</p>
+      <ul><li>Mapa completo</li><li>36 cartas com busca</li><li>Tiragem virtual</li></ul>
+      <a class="botao" href="https://pay.kiwify.com.br/Gc4MTuN">Assinar mensal</a>
+    </article>
+    <article class="plano">
+      <h3>Trimestral</h3><span class="periodo">3 meses</span>
+      <p class="valor"><small>R$</small> 29,90</p><p class="mes">R$ 9,97 por mês</p><span class="eco">economize 17%</span>
+      <ul><li>Mapa completo</li><li>36 cartas com busca</li><li>Tiragem virtual</li></ul>
+      <a class="botao" href="https://pay.kiwify.com.br/ttLDh12">Assinar trimestral</a>
+    </article>
+    <article class="plano">
+      <h3>Semestral</h3><span class="periodo">6 meses</span>
+      <p class="valor"><small>R$</small> 49,90</p><p class="mes">R$ 8,32 por mês</p><span class="eco">economize 31%</span>
+      <ul><li>Mapa completo</li><li>36 cartas com busca</li><li>Tiragem virtual</li></ul>
+      <a class="botao" href="https://pay.kiwify.com.br/9nziA0P">Assinar semestral</a>
+    </article>
+    <article class="plano destaque">
+      <span class="fita">Melhor custo</span>
+      <h3>Anual</h3><span class="periodo">12 meses</span>
+      <p class="valor"><small>R$</small> 79,90</p><p class="mes">R$ 6,66 por mês</p><span class="eco">economize 45%</span>
+      <ul><li>Mapa completo</li><li>36 cartas com busca</li><li>Tiragem virtual</li></ul>
+      <a class="botao" href="https://pay.kiwify.com.br/sMUEg90">Assinar anual</a>
+    </article>
+  </div></div></section>
+
+<section class="faixa passos"><div class="miolo">
+  <div class="cab"><span class="eyebrow">Como funciona</span><h2>Do pagamento à primeira tiragem</h2></div>
+  <div class="linha-passos">
+    <div class="passo"><b>1. Escolha o plano</b><p>Pague com cartão, Pix ou boleto na página segura da Kiwify.</p></div>
+    <div class="passo"><b>2. Crie sua senha</b><p>Logo depois do pagamento você vai direto para a tela de criar sua senha.</p></div>
+    <div class="passo"><b>3. Comece a ler</b><p>Entre na área de membros pelo celular ou computador e comece pelas cartas que quiser.</p></div>
+  </div>
+</div></section>
+
+<section class="faixa faq"><div class="miolo">
+  <div class="cab"><span class="eyebrow">Dúvidas</span><h2>Perguntas frequentes</h2></div>
+  <details><summary>Vou receber um PDF?</summary><p>Não. O Mapa fica na área de membros, onde você lê, busca as cartas e faz tiragens online, no celular ou no computador, enquanto sua assinatura estiver ativa.</p></details>
+  <details><summary>Preciso saber alguma coisa antes?</summary><p>Não. O Mapa explica cada carta do zero e traz exemplos de combinações e tiragens, então serve para quem está começando.</p></details>
+  <details><summary>Posso cancelar quando quiser?</summary><p>Sim. Se cancelar a renovação, você continua com acesso até o fim do período que já pagou.</p></details>
+  <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Peça o reembolso pela Kiwify dentro desse prazo e o valor é devolvido.</p></details>
+  <details><summary>Posso usar em mais de um aparelho?</summary><p>Você pode entrar de qualquer aparelho, mas a conta funciona em um aparelho por vez. Ao entrar em outro, o anterior é desconectado.</p></details>
+</div></section>
+
+<footer class="faixa"><div class="miolo">
+  <p class="mao">Mapa do Baralho Cigano</p>
+  <p>© Mapa do Baralho Cigano. Conteúdo protegido pela Lei 9.610/98 (Lei de Direitos Autorais). É proibida a cópia, reprodução ou venda, total ou parcial.</p>
+</div></footer>
+
+<script>
+(function(){
+  // Carrossel: setas, pontos e avanço automático (pausa ao tocar)
+  var trilho=document.getElementById('trilho'),slides=[].slice.call(trilho.children);
+  var pontos=document.createElement('div');pontos.className='pontos';
+  slides.forEach(function(){pontos.appendChild(document.createElement('i'))});
+  trilho.parentNode.insertBefore(pontos,trilho.nextSibling.nextSibling);
+  function atual(){var c=trilho.scrollLeft+trilho.clientWidth/2,m=0,d=1e9;slides.forEach(function(s,i){var x=Math.abs(s.offsetLeft+s.offsetWidth/2-c);if(x<d){d=x;m=i}});return m}
+  function ir(i){i=(i+slides.length)%slides.length;trilho.scrollTo({left:slides[i].offsetLeft-(trilho.clientWidth-slides[i].offsetWidth)/2})}
+  function marcar(){var a=atual();[].forEach.call(pontos.children,function(p,i){p.className=i===a?'on':''})}
+  trilho.addEventListener('scroll',function(){clearTimeout(trilho._t);trilho._t=setTimeout(marcar,80)});
+  document.getElementById('voltar').onclick=function(){parar();ir(atual()-1)};
+  document.getElementById('avancar').onclick=function(){parar();ir(atual()+1)};
+  var auto=matchMedia('(prefers-reduced-motion: reduce)').matches?null:setInterval(function(){ir(atual()+1)},4500);
+  function parar(){clearInterval(auto)}
+  trilho.addEventListener('pointerdown',parar);trilho.addEventListener('keydown',parar);
+  marcar();
+
+  // Demonstração da tiragem
+  var C=[["O Cavaleiro","Movimento e novidades a caminho."],["O Trevo","Sorte passageira e oportunidades."],["O Navio","Viagens, mudanças e progresso."],["A Casa","Lar, família e segurança."],["A Árvore","Crescimento, saúde e raízes."],["As Nuvens","Dúvidas e fases nebulosas."],["O Buquê","Alegria, presentes e harmonia."],["Os Pássaros","Conversas e comunicação."],["A Criança","Novos começos e leveza."],["O Cachorro","Amizade e lealdade."],["A Estrela","Fé, esperança e proteção."],["A Cegonha","Mudanças positivas e novidades."],["O Jardim","Vida social e conexões."],["Os Caminhos","Escolhas e decisões."],["O Coração","Amor e sentimentos profundos."],["O Anel","Compromissos e alianças."],["O Livro","Segredos e conhecimento."],["A Carta","Mensagens e notícias."],["Os Lírios","Paz, maturidade e harmonia."],["O Sol","Sucesso, clareza e conquistas."],["A Lua","Intuição e reconhecimento."],["A Chave","Solução e portas se abrindo."],["Os Peixes","Dinheiro e prosperidade."],["A Âncora","Estabilidade e segurança."]];
+  var pos=["70% da resposta","25% da resposta","5% da resposta"],trio=document.getElementById('trio');
+  document.getElementById('embaralhar').onclick=function(){
+    var b=C.slice();for(var i=b.length-1;i>0;i--){var r=new Uint32Array(1);crypto.getRandomValues(r);var j=r[0]%(i+1),t=b[i];b[i]=b[j];b[j]=t}
+    trio.innerHTML='';b.slice(0,3).forEach(function(c,i){var d=document.createElement('div');d.className='mini-carta virando';d.style.animationDelay=(i*.12)+'s';
+      d.innerHTML='<small>'+pos[i]+'</small><b></b><p></p>';d.querySelector('b').textContent=c[0];d.querySelector('p').textContent=c[1];trio.appendChild(d)});
+  };
+  // Amostras não podem ser arrastadas nem salvas com o botão direito
+  document.addEventListener('contextmenu',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+})();
+</script>
+</body>
+</html>
